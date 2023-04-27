@@ -1,0 +1,157 @@
+<!-- {% load i18n %} -->
+
+
+
+<style>
+  /* Login form styles */
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #ccc;
+}
+
+.container h2 {
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.socialaccount_ballot {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.socialaccount_ballot h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.socialaccount_providers {
+  display: inline-block;
+}
+
+.google-btn {
+  display: inline-block;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #DB4437;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  /* margin: 10px; */
+  width: 98%;
+}
+
+.google-btn:hover {
+  background-color: #C73E31;
+}
+
+.google-btn img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+</style>
+{% load account socialaccount %}
+{% providers_media_js %}
+
+
+
+<form action="/login/" method="POST">
+   {% csrf_token %}
+   
+    <div class="container mt-5">
+      <h2>LOG IN</h2>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password">
+    </div>
+
+    <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="socialaccount_ballot google-btn mt-3">
+      <div class="socialaccount_providers">
+          <a href="{% provider_login_url 'google' %}" class="google-btn">
+              <img src="../../media/icons8-google-48.png" alt="Google Icon">Sign in with Google
+          </a>
+        <!-- {% include "socialaccount/snippets/provider_list.html" with process="login" %} -->
+      </div>
+    </div>
+  </div>
+  </form>

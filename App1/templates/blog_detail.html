@@ -1,0 +1,42 @@
+<style>
+    .post-image {
+      /* max-width: ; */
+      width: auto;
+      height: 400px;
+      margin-left: 30%;
+      margin-top: 2%;
+    }
+    .post-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      margin-top: 15px;
+    }
+    .post-author {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+    .post-date {
+      font-size: 1rem;
+      font-style: italic;
+      color: #777;
+    }
+  </style>
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <img src="{{ post.image.url }}" alt="{{ post.title }}" width="500" class="post-image">
+  <h1 class="post-title">{{ post.title }}</h1>
+  <p class="post-author">By {{ post.author.username }}</p>
+  <p class="post-content">{{ post.content }}</p>
+  <h3 class="post-date">{{ post.dateTime }}</h3>
+</div>
+
+  {% endblock content %}

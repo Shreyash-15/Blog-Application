@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Logs</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Action</th>
+        <th>User</th>
+        <th>Blog Post</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in logs %}
+        <tr>
+          <td>{{ log.timestamp }}</td>
+          <td>{{ log.action }}</td>
+          <td>{{ log.user.username }}</td>
+          <td><a href="{% url 'blog_detail' log.post.id %}">{{ log.post.title }}</a></td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No logs found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

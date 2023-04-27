@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+    .main_div1{
+        background-image:linear-gradient(rgba(77, 81, 84, 0.8),rgb(8,21,40,0.8)), url(../../media/lukas-blazek-GnvurwJsKaY-unsplash.jpg);
+        height: 300px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+    }
+    
+    .main_div1 h1{
+        padding-top: 100px;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 700;
+        color: white;
+        font-size: 40px;
+        margin-bottom: 5px;
+    
+    }
+    
+    .main_div1 a{
+        color: white;
+        text-decoration: none;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 700;
+        transition: all 0.5s;
+    }
+    
+    .main_div1 a:hover{
+        color:rgb(254,152,47) ;
+    }
+    
+    .main_div1 .double_angle{
+        color: rgb(254,152,47) !important;
+        
+    }
+    
+    .main_div1 .contact{
+        color: rgb(254,152,47) !important;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 600;
+    }
+
+    .main_div2{
+        height: 90vh;
+    }
+
+    .card{
+        width: 500px !important;
+        justify-content: center !important;
+        align-items: center;
+        padding-top: 20px;
+        background-color: rgb(132, 225, 192);
+        height: fit-content !important;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding-bottom: 10px !important;
+    }
+
+    .form-control{
+        width: 400px !important;
+    }
+    
+    label{
+        align-self: center;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .btn{
+        width: 80%;
+    }
+</style>
+
+<div class="main_div1">
+    <h1>ADD BLOGS</h1>
+    <span>
+        <a href="{% url 'blogs' %}"><i class="fa fa-home"></i>Home</a>
+    </span>
+    <span class="material-symbols-outlined double_angle">
+        keyboard_double_arrow_right
+        </span>
+    <span class="contact">Add Blogs</span>
+</div>
+
+<div class="main_div2">
+<form action="/add_blogs/" enctype="multipart/form-data" method="POST"> 
+    {% csrf_token %}
+    <div class="container card mt-4">
+    {{ form.as_p }}
+    <button class="btn btn-success">Add Blog</button>
+    </div>
+</form>
+</div>
+
+
+
+{% endblock content %}

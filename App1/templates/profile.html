@@ -1,0 +1,150 @@
+<style>
+    /* .col-md-6 {
+    flex: 0 0 auto;
+    width: 20% !important;
+    } */
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+    .main_div1{
+        background-image:linear-gradient(rgba(77, 81, 84, 0.8),rgb(8,21,40,0.8)), url(../../media/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background.jpg);
+        height: 300px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+    }
+    
+    .main_div1 h1{
+        padding-top: 100px;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 700;
+        color: white;
+        font-size: 40px;
+        margin-bottom: 5px;
+    
+    }
+    
+    .main_div1 a{
+        color: white;
+        text-decoration: none;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 700;
+        transition: all 0.5s;
+    }
+    
+    .main_div1 a:hover{
+        color:rgb(254,152,47) ;
+    }
+    
+    .main_div1 .double_angle{
+        color: rgb(254,152,47) !important;
+        
+    }
+    
+    .main_div1 .contact{
+        color: rgb(254,152,47) !important;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 600;
+    }
+
+    .main_div2{
+        height: 90vh;
+    }
+
+    .card{
+        width: 500px !important;
+    }
+
+    .main_div2{
+        height: 90vh !important;
+    }
+
+    .card{
+        width: 500px !important;
+        height: 400px !important;
+        margin-top: 20px !important;
+        background-color: rgb(132, 225, 197) !important;
+        align-items: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+
+    label{
+        align-self: center;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        
+        /* width: 20px; */
+    }
+
+    p{
+        font-size: 20px !important;
+
+    }
+
+</style>
+{% extends "base.html" %}
+{% block content %}
+<div class="main_div1">
+    <h1>PROFILE</h1>
+    <span>
+        <a href="{% url 'blogs' %}"><i class="fa fa-home"></i>Home</a>
+    </span>
+    <span class="material-symbols-outlined double_angle">
+        keyboard_double_arrow_right
+        </span>
+    <span class="contact">Profile</span>
+</div>
+
+<div class="container main_div2 profile">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- <div class="profile-img">
+                {% if user.profile.image %}
+                <img src="{{user.profile.image.url}}" alt="" width="310px" height="270px">
+                {% endif %}
+            </div> -->
+        </div>
+        <div class="col-md-8 card">
+            <div class="profile-tab">
+                <div class="tab-pane">
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Username:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{user}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Full Name:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{user.get_full_name}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{user.email}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                <a href="/edit_profile/"class="btn btn-success">Edit Profile</a>
+                <a class="btn btn-warning" href="{% url 'change_password' %}">Change Password</a>
+            </div>
+            </div>
+        </div>
+</div>
+</div>
+
+
+
+{% endblock content %}
